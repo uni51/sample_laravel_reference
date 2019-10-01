@@ -1,0 +1,23 @@
+filter:
+    paths:
+        - app/*
+    excluded_paths:
+        - tests/*
+tools:
+    php_code_sniffer:
+        config:
+            standard: "PSR2"
+    php_cs_fixer:
+        config: { level: psr2 }
+checks:
+    php:
+        code_rating: true
+        duplication: true
+build:
+    tests:
+        override:
+            -
+                command: 'phpunit'
+                coverage:
+                    file: 'tests/build/clover.xml'
+                    format: 'php-clover'
